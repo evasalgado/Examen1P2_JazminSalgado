@@ -57,6 +57,16 @@ public class MainMenu extends javax.swing.JFrame {
         modelo.addElement("Libro de Ficcion");
         modelo.addElement("Libro de No Ficcion");
         cb_listar.setModel(modelo);
+        modelo = new DefaultComboBoxModel();
+
+        modelo = (DefaultComboBoxModel) cb_tipo.getModel();
+        modelo.addElement("Libro de Texto");
+        modelo.addElement("Libro de referencias");
+        modelo.addElement("Libro de Ficcion");
+        modelo.addElement("Libro de No Ficcion");
+        cb_tipo.setModel(modelo);
+        cb_tipoeliminar.setModel(modelo);
+
     }
 
     /**
@@ -107,7 +117,7 @@ public class MainMenu extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        ta_editar = new javax.swing.JTextArea();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -420,9 +430,9 @@ public class MainMenu extends javax.swing.JFrame {
 
         jLabel10.setText("Libro:");
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        ta_editar.setColumns(20);
+        ta_editar.setRows(5);
+        jScrollPane2.setViewportView(ta_editar);
 
         jLabel11.setText("Titulo: ");
 
@@ -431,6 +441,18 @@ public class MainMenu extends javax.swing.JFrame {
         jLabel13.setText("Precio: ");
 
         bt_editar.setText("Editar Libro");
+
+        cb_tipo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_tipoItemStateChanged(evt);
+            }
+        });
+
+        cb_libro.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_libroItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout pn_editarLayout = new javax.swing.GroupLayout(pn_editar);
         pn_editar.setLayout(pn_editarLayout);
@@ -505,6 +527,12 @@ public class MainMenu extends javax.swing.JFrame {
         );
 
         tp_menuadmin.addTab("Editar Libros", pn_editar);
+
+        cb_tipoeliminar.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_tipoeliminarItemStateChanged(evt);
+            }
+        });
 
         jLabel14.setText("Tipo:");
 
@@ -820,44 +848,44 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_usuariologinMouseClicked
 
     private void cb_listarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_listarItemStateChanged
-        if (evt.getStateChange()==2) {
+        if (evt.getStateChange() == 2) {
             if (cb_listar.getSelectedItem().toString().equalsIgnoreCase("Todos")) {
                 for (libro libro1 : libros) {
                     if (libro1 instanceof libro) {
-                        ta_listar.setText(libro1+"\n\n");
+                        ta_listar.setText(libro1 + "\n\n");
                     }
                 }
-            } else if(cb_listar.getSelectedItem().toString().equalsIgnoreCase("Libro de Texto")){
+            } else if (cb_listar.getSelectedItem().toString().equalsIgnoreCase("Libro de Texto")) {
                 for (libro libro1 : libros) {
                     if (libro1 instanceof libro_texto) {
-                         ta_listar.setText(libro1+"\n\n");
+                        ta_listar.setText(libro1 + "\n\n");
                     }
                 }
-            } else if (cb_listar.getSelectedItem().toString().equalsIgnoreCase("Libro de referencias")){
-               for (libro libro1 : libros) {
+            } else if (cb_listar.getSelectedItem().toString().equalsIgnoreCase("Libro de referencias")) {
+                for (libro libro1 : libros) {
                     if (libro1 instanceof libro_referencia) {
-                         ta_listar.setText(libro1+"\n\n");
+                        ta_listar.setText(libro1 + "\n\n");
                     }
-                } 
-            } else if (cb_listar.getSelectedItem().toString().equalsIgnoreCase("Libro de Ficcion")){
-               for (libro libro1 : libros) {
+                }
+            } else if (cb_listar.getSelectedItem().toString().equalsIgnoreCase("Libro de Ficcion")) {
+                for (libro libro1 : libros) {
                     if (libro1 instanceof libro_ficcion) {
-                         ta_listar.setText(libro1+"\n\n");
+                        ta_listar.setText(libro1 + "\n\n");
                     }
-                } 
-            } else if (cb_listar.getSelectedItem().toString().equalsIgnoreCase("Libro de No Ficcion")){
-               for (libro libro1 : libros) {
+                }
+            } else if (cb_listar.getSelectedItem().toString().equalsIgnoreCase("Libro de No Ficcion")) {
+                for (libro libro1 : libros) {
                     if (libro1 instanceof libro_noficcion) {
-                         ta_listar.setText(libro1+"\n\n");
+                        ta_listar.setText(libro1 + "\n\n");
                     }
-                } 
-            } 
+                }
+            }
         }
     }//GEN-LAST:event_cb_listarItemStateChanged
 
     private void bt_publicarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_publicarMouseClicked
         String title = tf_titulo.getText(),
-        author = tf_autor.getText();
+                author = tf_autor.getText();
         double price = Double.parseDouble(tf_precio.getText());
         if (pn_librotexto.isShowing()) {
             String curso = tf_curso.getText(), facultad = tf_facultad.getText();
@@ -889,7 +917,98 @@ public class MainMenu extends javax.swing.JFrame {
         tp_menuadmin.setVisible(false);
         tp_menuUser.setVisible(false);
     }//GEN-LAST:event_bt_SalirMouseClicked
-    
+
+    private void cb_tipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_tipoItemStateChanged
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        modelo = (DefaultComboBoxModel) cb_libro.getModel();
+        if (evt.getStateChange() == 2) {
+            if (cb_tipo.getSelectedItem().toString().equalsIgnoreCase("Libro de Texto")) {
+                modelo = new DefaultComboBoxModel();
+                for (libro libro1 : libros) {
+                    if (libro1 instanceof libro_texto) {
+
+                        modelo.addElement(libro1.getTitulo() + "\n");
+                    }
+                }
+
+            } else if (cb_tipo.getSelectedItem().toString().equalsIgnoreCase("Libro de referencias")) {
+                modelo = new DefaultComboBoxModel();
+                for (libro libro1 : libros) {
+                    if (libro1 instanceof libro_referencia) {
+
+                        modelo.addElement(libro1.getTitulo() + "\n");
+                    }
+                }
+            } else if (cb_tipo.getSelectedItem().toString().equalsIgnoreCase("Libro de Ficcion")) {
+                modelo = new DefaultComboBoxModel();
+                for (libro libro1 : libros) {
+                    if (libro1 instanceof libro_ficcion) {
+
+                        modelo.addElement(libro1.getTitulo() + "\n");
+                    }
+                }
+            } else if (cb_tipo.getSelectedItem().toString().equalsIgnoreCase("Libro de No Ficcion")) {
+                modelo = new DefaultComboBoxModel();
+                for (libro libro1 : libros) {
+                    if (libro1 instanceof libro_noficcion) {
+
+                        modelo.addElement(libro1.getTitulo() + "\n");
+                    }
+                }
+            }
+            cb_libro.setModel(modelo);
+        }
+    }//GEN-LAST:event_cb_tipoItemStateChanged
+
+    private void cb_libroItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_libroItemStateChanged
+        String book = "";
+        if (evt.getStateChange() == 2) {
+           
+        }
+    }//GEN-LAST:event_cb_libroItemStateChanged
+
+    private void cb_tipoeliminarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_tipoeliminarItemStateChanged
+       DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        modelo = (DefaultComboBoxModel) cb_libro.getModel();
+        if (evt.getStateChange() == 2) {
+            if (cb_tipoeliminar.getSelectedItem().toString().equalsIgnoreCase("Libro de Texto")) {
+                modelo = new DefaultComboBoxModel();
+                for (libro libro1 : libros) {
+                    if (libro1 instanceof libro_texto) {
+
+                        modelo.addElement(libro1.getTitulo() + "\n");
+                    }
+                }
+
+            } else if (cb_tipoeliminar.getSelectedItem().toString().equalsIgnoreCase("Libro de referencias")) {
+                modelo = new DefaultComboBoxModel();
+                for (libro libro1 : libros) {
+                    if (libro1 instanceof libro_referencia) {
+
+                        modelo.addElement(libro1.getTitulo() + "\n");
+                    }
+                }
+            } else if (cb_tipoeliminar.getSelectedItem().toString().equalsIgnoreCase("Libro de Ficcion")) {
+                modelo = new DefaultComboBoxModel();
+                for (libro libro1 : libros) {
+                    if (libro1 instanceof libro_ficcion) {
+
+                        modelo.addElement(libro1.getTitulo() + "\n");
+                    }
+                }
+            } else if (cb_tipoeliminar.getSelectedItem().toString().equalsIgnoreCase("Libro de No Ficcion")) {
+                modelo = new DefaultComboBoxModel();
+                for (libro libro1 : libros) {
+                    if (libro1 instanceof libro_noficcion) {
+
+                        modelo.addElement(libro1.getTitulo() + "\n");
+                    }
+                }
+            }
+            cb_libroeliminar.setModel(modelo);
+        }
+    }//GEN-LAST:event_cb_tipoeliminarItemStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -978,7 +1097,6 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextArea jTextArea4;
     private javax.swing.JTextArea jTextArea5;
@@ -996,6 +1114,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JPanel pn_librotexto;
     private javax.swing.JPanel pn_listarlibros;
     private javax.swing.JPanel pn_publicar;
+    private javax.swing.JTextArea ta_editar;
     private javax.swing.JTextArea ta_listar;
     private javax.swing.JTextField tf_adminuser;
     private javax.swing.JTextField tf_autor;
