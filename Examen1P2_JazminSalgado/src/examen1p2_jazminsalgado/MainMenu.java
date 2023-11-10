@@ -66,6 +66,8 @@ public class MainMenu extends javax.swing.JFrame {
         modelo.addElement("Libro de No Ficcion");
         cb_tipo.setModel(modelo);
         cb_tipoeliminar.setModel(modelo);
+        cb_tipocompra.setModel(modelo);
+        cb_tipodevuelve.setModel(modelo);
 
     }
 
@@ -116,8 +118,6 @@ public class MainMenu extends javax.swing.JFrame {
         pn_editar = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        ta_editar = new javax.swing.JTextArea();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -127,6 +127,8 @@ public class MainMenu extends javax.swing.JFrame {
         bt_editar = new javax.swing.JButton();
         cb_tipo = new javax.swing.JComboBox<>();
         cb_libro = new javax.swing.JComboBox<>();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
         pn_eliminar = new javax.swing.JPanel();
         cb_tipoeliminar = new javax.swing.JComboBox<>();
         cb_libroeliminar = new javax.swing.JComboBox<>();
@@ -146,8 +148,8 @@ public class MainMenu extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         jTextArea5 = new javax.swing.JTextArea();
         bt_comprar = new javax.swing.JButton();
-        cb_tipodevuelve1 = new javax.swing.JComboBox<>();
-        cb_librodevuele1 = new javax.swing.JComboBox<>();
+        cb_tipocompra = new javax.swing.JComboBox<>();
+        cb_librocompra = new javax.swing.JComboBox<>();
         pn_devolver = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTextArea6 = new javax.swing.JTextArea();
@@ -396,6 +398,11 @@ public class MainMenu extends javax.swing.JFrame {
                 cb_listarItemStateChanged(evt);
             }
         });
+        cb_listar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_listarActionPerformed(evt);
+            }
+        });
 
         ta_listar.setColumns(20);
         ta_listar.setRows(5);
@@ -426,105 +433,57 @@ public class MainMenu extends javax.swing.JFrame {
 
         tp_menuadmin.addTab("Listar Libros", pn_listarlibros);
 
+        pn_editar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel9.setText("Tipo:");
+        pn_editar.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 30, 96, 39));
 
         jLabel10.setText("Libro:");
-
-        ta_editar.setColumns(20);
-        ta_editar.setRows(5);
-        jScrollPane2.setViewportView(ta_editar);
+        pn_editar.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 75, 96, 39));
 
         jLabel11.setText("Titulo: ");
+        pn_editar.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 132, 96, 39));
 
         jLabel12.setText("Autor: ");
+        pn_editar.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 177, 96, 39));
 
         jLabel13.setText("Precio: ");
+        pn_editar.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 222, 96, 39));
+        pn_editar.add(tf_tituloeditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 140, 181, -1));
+        pn_editar.add(tf_autoreditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 177, 181, -1));
+        pn_editar.add(tf_precioeditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 222, 181, -1));
 
         bt_editar.setText("Editar Libro");
+        pn_editar.add(bt_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(632, 440, -1, -1));
 
         cb_tipo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cb_tipoItemStateChanged(evt);
             }
         });
+        pn_editar.add(cb_tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 38, 132, -1));
 
         cb_libro.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cb_libroItemStateChanged(evt);
             }
         });
+        pn_editar.add(cb_libro, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 83, 132, -1));
 
-        javax.swing.GroupLayout pn_editarLayout = new javax.swing.GroupLayout(pn_editar);
-        pn_editar.setLayout(pn_editarLayout);
-        pn_editarLayout.setHorizontalGroup(
-            pn_editarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pn_editarLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(pn_editarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pn_editarLayout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(pn_editarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pn_editarLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(pn_editarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pn_editarLayout.createSequentialGroup()
-                                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tf_tituloeditar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(pn_editarLayout.createSequentialGroup()
-                                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tf_autoreditar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(pn_editarLayout.createSequentialGroup()
-                                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tf_precioeditar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_editarLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(bt_editar))))
-                    .addGroup(pn_editarLayout.createSequentialGroup()
-                        .addGroup(pn_editarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pn_editarLayout.createSequentialGroup()
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cb_libro, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pn_editarLayout.createSequentialGroup()
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cb_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pn_editarLayout.setVerticalGroup(
-            pn_editarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pn_editarLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(pn_editarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cb_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pn_editarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cb_libro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(pn_editarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pn_editarLayout.createSequentialGroup()
-                        .addGroup(pn_editarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_tituloeditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pn_editarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_autoreditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pn_editarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_precioeditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bt_editar)))
-                .addContainerGap(162, Short.MAX_VALUE))
-        );
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Titulo", "Autor", "Precio", "Edicion"
+            }
+        ));
+        jScrollPane9.setViewportView(jTable3);
+
+        pn_editar.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 300, 290));
 
         tp_menuadmin.addTab("Editar Libros", pn_editar);
 
@@ -608,6 +567,12 @@ public class MainMenu extends javax.swing.JFrame {
 
         bt_comprar.setText("Comprar Libro");
 
+        cb_tipocompra.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_tipocompraItemStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout pn_comprarLayout = new javax.swing.GroupLayout(pn_comprar);
         pn_comprar.setLayout(pn_comprarLayout);
         pn_comprarLayout.setHorizontalGroup(
@@ -633,8 +598,8 @@ public class MainMenu extends javax.swing.JFrame {
                                         .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(pn_comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(cb_librodevuele1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(cb_tipodevuelve1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(cb_librocompra, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cb_tipocompra, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(28, 28, 28)
                         .addComponent(bt_comprar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -649,9 +614,9 @@ public class MainMenu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel17))
                     .addGroup(pn_comprarLayout.createSequentialGroup()
-                        .addComponent(cb_tipodevuelve1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cb_tipocompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cb_librodevuele1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cb_librocompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(88, 88, 88)
                 .addComponent(jLabel19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -686,6 +651,12 @@ public class MainMenu extends javax.swing.JFrame {
         jScrollPane7.setViewportView(jTextArea7);
 
         bt_devolver.setText("Devolver Libro");
+
+        cb_tipodevuelve.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_tipodevuelveItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout pn_devolverLayout = new javax.swing.GroupLayout(pn_devolver);
         pn_devolver.setLayout(pn_devolverLayout);
@@ -760,7 +731,7 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(tp_menuadmin, javax.swing.GroupLayout.DEFAULT_SIZE, 803, Short.MAX_VALUE)
+                    .addComponent(tp_menuadmin)
                     .addContainerGap()))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -779,12 +750,12 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(tp_menuadmin, javax.swing.GroupLayout.DEFAULT_SIZE, 656, Short.MAX_VALUE)
+                    .addComponent(tp_menuadmin)
                     .addContainerGap()))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(tp_menuUser, javax.swing.GroupLayout.DEFAULT_SIZE, 656, Short.MAX_VALUE)
+                    .addComponent(tp_menuUser)
                     .addContainerGap()))
         );
 
@@ -848,12 +819,14 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_usuariologinMouseClicked
 
     private void cb_listarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_listarItemStateChanged
+        String print = "";
         if (evt.getStateChange() == 2) {
             if (cb_listar.getSelectedItem().toString().equalsIgnoreCase("Todos")) {
                 for (libro libro1 : libros) {
                     if (libro1 instanceof libro) {
                         ta_listar.setText(libro1 + "\n\n");
                     }
+
                 }
             } else if (cb_listar.getSelectedItem().toString().equalsIgnoreCase("Libro de Texto")) {
                 for (libro libro1 : libros) {
@@ -961,14 +934,15 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_cb_tipoItemStateChanged
 
     private void cb_libroItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_libroItemStateChanged
-        String book = "";
+
         if (evt.getStateChange() == 2) {
-           
+            libro books = (libro) cb_libro.getSelectedItem();
+            Object [] row = {books.getTitulo(), books.getAutor(), books.precio, books.getEdicion()};
         }
     }//GEN-LAST:event_cb_libroItemStateChanged
 
     private void cb_tipoeliminarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_tipoeliminarItemStateChanged
-       DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         modelo = (DefaultComboBoxModel) cb_libro.getModel();
         if (evt.getStateChange() == 2) {
             if (cb_tipoeliminar.getSelectedItem().toString().equalsIgnoreCase("Libro de Texto")) {
@@ -1008,6 +982,94 @@ public class MainMenu extends javax.swing.JFrame {
             cb_libroeliminar.setModel(modelo);
         }
     }//GEN-LAST:event_cb_tipoeliminarItemStateChanged
+
+    private void cb_tipocompraItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_tipocompraItemStateChanged
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        modelo = (DefaultComboBoxModel) cb_libro.getModel();
+        if (evt.getStateChange() == 2) {
+            if (cb_tipocompra.getSelectedItem().toString().equalsIgnoreCase("Libro de Texto")) {
+                modelo = new DefaultComboBoxModel();
+                for (libro libro1 : libros) {
+                    if (libro1 instanceof libro_texto) {
+
+                        modelo.addElement(libro1.getTitulo() + "\n");
+                    }
+                }
+
+            } else if (cb_tipocompra.getSelectedItem().toString().equalsIgnoreCase("Libro de referencias")) {
+                modelo = new DefaultComboBoxModel();
+                for (libro libro1 : libros) {
+                    if (libro1 instanceof libro_referencia) {
+
+                        modelo.addElement(libro1.getTitulo() + "\n");
+                    }
+                }
+            } else if (cb_tipocompra.getSelectedItem().toString().equalsIgnoreCase("Libro de Ficcion")) {
+                modelo = new DefaultComboBoxModel();
+                for (libro libro1 : libros) {
+                    if (libro1 instanceof libro_ficcion) {
+
+                        modelo.addElement(libro1.getTitulo() + "\n");
+                    }
+                }
+            } else if (cb_tipocompra.getSelectedItem().toString().equalsIgnoreCase("Libro de No Ficcion")) {
+                modelo = new DefaultComboBoxModel();
+                for (libro libro1 : libros) {
+                    if (libro1 instanceof libro_noficcion) {
+
+                        modelo.addElement(libro1.getTitulo() + "\n");
+                    }
+                }
+            }
+            cb_librocompra.setModel(modelo);
+        }
+    }//GEN-LAST:event_cb_tipocompraItemStateChanged
+
+    private void cb_tipodevuelveItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_tipodevuelveItemStateChanged
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        modelo = (DefaultComboBoxModel) cb_libro.getModel();
+        if (evt.getStateChange() == 2) {
+            if (cb_tipodevuelve.getSelectedItem().toString().equalsIgnoreCase("Libro de Texto")) {
+                modelo = new DefaultComboBoxModel();
+                for (libro libro1 : libros) {
+                    if (libro1 instanceof libro_texto) {
+
+                        modelo.addElement(libro1.getTitulo() + "\n");
+                    }
+                }
+
+            } else if (cb_tipodevuelve.getSelectedItem().toString().equalsIgnoreCase("Libro de referencias")) {
+                modelo = new DefaultComboBoxModel();
+                for (libro libro1 : libros) {
+                    if (libro1 instanceof libro_referencia) {
+
+                        modelo.addElement(libro1.getTitulo() + "\n");
+                    }
+                }
+            } else if (cb_tipodevuelve.getSelectedItem().toString().equalsIgnoreCase("Libro de Ficcion")) {
+                modelo = new DefaultComboBoxModel();
+                for (libro libro1 : libros) {
+                    if (libro1 instanceof libro_ficcion) {
+
+                        modelo.addElement(libro1.getTitulo() + "\n");
+                    }
+                }
+            } else if (cb_tipodevuelve.getSelectedItem().toString().equalsIgnoreCase("Libro de No Ficcion")) {
+                modelo = new DefaultComboBoxModel();
+                for (libro libro1 : libros) {
+                    if (libro1 instanceof libro_noficcion) {
+
+                        modelo.addElement(libro1.getTitulo() + "\n");
+                    }
+                }
+            }
+            cb_librodevuele.setModel(modelo);
+        }
+    }//GEN-LAST:event_cb_tipodevuelveItemStateChanged
+
+    private void cb_listarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_listarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_listarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1055,14 +1117,14 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton bt_publicar;
     private javax.swing.JButton bt_usuariologin;
     private javax.swing.JComboBox<String> cb_libro;
+    private javax.swing.JComboBox<String> cb_librocompra;
     private javax.swing.JComboBox<String> cb_librodevuele;
-    private javax.swing.JComboBox<String> cb_librodevuele1;
     private javax.swing.JComboBox<String> cb_libroeliminar;
     private javax.swing.JComboBox<String> cb_listar;
     private javax.swing.JComboBox<String> cb_tipo;
     private javax.swing.JComboBox<String> cb_tipoFic;
+    private javax.swing.JComboBox<String> cb_tipocompra;
     private javax.swing.JComboBox<String> cb_tipodevuelve;
-    private javax.swing.JComboBox<String> cb_tipodevuelve1;
     private javax.swing.JComboBox<String> cb_tipoeliminar;
     private javax.swing.JComboBox<String> cb_tiponofic;
     private javax.swing.JComboBox<String> cb_tiporef;
@@ -1091,12 +1153,13 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane9;
+    private javax.swing.JTable jTable3;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextArea jTextArea4;
     private javax.swing.JTextArea jTextArea5;
@@ -1114,7 +1177,6 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JPanel pn_librotexto;
     private javax.swing.JPanel pn_listarlibros;
     private javax.swing.JPanel pn_publicar;
-    private javax.swing.JTextArea ta_editar;
     private javax.swing.JTextArea ta_listar;
     private javax.swing.JTextField tf_adminuser;
     private javax.swing.JTextField tf_autor;
