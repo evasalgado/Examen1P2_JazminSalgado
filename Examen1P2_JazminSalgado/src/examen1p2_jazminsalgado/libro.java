@@ -12,12 +12,12 @@ public class libro {
     protected String titulo;
     protected String autor;
     protected double precio;
-    protected String edicion;
+    protected int edicion;
 
     public libro() {
     }
 
-    public libro(String titulo, String autor, double precio, String edicion) {
+    public libro(String titulo, String autor, double precio, int edicion) {
         this.titulo = titulo;
         this.autor = autor;
         this.precio = precio;
@@ -48,18 +48,19 @@ public class libro {
         this.precio = precio;
     }
 
-    public String getEdicion() {
+    public int getEdicion() {
         return edicion;
     }
 
-    public void setEdicion(String edicion) {
+    public void setEdicion(int edicion) {
         this.edicion = edicion;
     }
 
     @Override
     public String toString() {
-        return "titulo=" + titulo + "\nautor=" + autor + "\nprecio=" + precio + "\nedicion=" + edicion ;
+        return "titulo=" + titulo + ", autor=" + autor + ", precio=" + precio + ", edicion=" + edicion + '}';
     }
+    
     
     
 }

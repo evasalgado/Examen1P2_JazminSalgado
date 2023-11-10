@@ -16,10 +16,11 @@ public class libro_referencia extends libro {
         super();
     }
 
-    public libro_referencia(String Tipo, String titulo, String autor, double precio, String edicion) {
+    public libro_referencia(String Tipo, String titulo, String autor, double precio, int edicion) {
         super(titulo, autor, precio, edicion);
         this.Tipo = Tipo;
     }
+
 
     public String getTipo() {
         return Tipo;

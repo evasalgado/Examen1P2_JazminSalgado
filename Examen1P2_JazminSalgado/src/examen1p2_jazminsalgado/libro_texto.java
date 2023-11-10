@@ -15,12 +15,13 @@ public class libro_texto extends libro{
         super();
     }
 
-    public libro_texto(String curso, String facultad, String titulo, String autor, double precio, String edicion) {
+    public libro_texto(String curso, String facultad, String titulo, String autor, double precio, int edicion) {
         super(titulo, autor, precio, edicion);
         this.curso = curso;
         this.facultad = facultad;
     }
 
+    
     public String getCurso() {
         return curso;
     }
