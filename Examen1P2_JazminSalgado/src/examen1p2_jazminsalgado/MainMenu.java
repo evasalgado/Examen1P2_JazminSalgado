@@ -4,6 +4,8 @@
  */
 package examen1p2_jazminsalgado;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author evaja
@@ -15,6 +17,7 @@ public class MainMenu extends javax.swing.JFrame {
      */
     public MainMenu() {
         initComponents();
+        jTabbedPane1.setVisible(false);
     }
 
     /**
@@ -28,34 +31,52 @@ public class MainMenu extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        tf_adminuser = new javax.swing.JTextField();
+        pf_adminpswd = new javax.swing.JPasswordField();
+        bt_loginAdmin = new javax.swing.JButton();
+        bt_usuariologin = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Administrador Log In\n");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(208, 144, 311, 74));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 719, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(208, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(200, Short.MAX_VALUE)))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 509, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(144, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(291, Short.MAX_VALUE)))
-        );
+        tf_adminuser.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel1.add(tf_adminuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(291, 210, 180, 32));
+
+        pf_adminpswd.setText("jPasswordField1");
+        pf_adminpswd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pf_adminpswdMouseClicked(evt);
+            }
+        });
+        jPanel1.add(pf_adminpswd, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 252, 150, 37));
+
+        bt_loginAdmin.setText("Log in Administrador");
+        bt_loginAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_loginAdminMouseClicked(evt);
+            }
+        });
+        jPanel1.add(bt_loginAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, 190, 30));
+
+        bt_usuariologin.setText("Ingresar como usuario");
+        jPanel1.add(bt_usuariologin, new org.netbeans.lib.awtextra.AbsoluteConstraints(498, 465, 197, 38));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setText("Nombre de Usuario");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 198, -1, 50));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setText("Contraseña");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 251, -1, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,6 +100,26 @@ public class MainMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void pf_adminpswdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pf_adminpswdMouseClicked
+        pf_adminpswd.setText("");
+    }//GEN-LAST:event_pf_adminpswdMouseClicked
+
+    private void bt_loginAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_loginAdminMouseClicked
+        String usuario = tf_adminuser.getText();
+        String contraseña = pf_adminpswd.getText();
+
+        if (contraseña.equalsIgnoreCase(pswrd) && usuario.equalsIgnoreCase(user)) {
+            JOptionPane.showMessageDialog(this, "Bienvenido " + usuario);
+            jPanel1.setVisible(false);
+            jTabbedPane1.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Credenciales incorrectas");
+            tf_adminuser.setText("");
+            pf_adminpswd.setText("");
+
+        }
+    }//GEN-LAST:event_bt_loginAdminMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -90,7 +131,7 @@ public class MainMenu extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("window".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -113,10 +154,16 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
     }
-
+    String user = "lib123", pswrd = "321lib";
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_loginAdmin;
+    private javax.swing.JButton bt_usuariologin;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JPasswordField pf_adminpswd;
+    private javax.swing.JTextField tf_adminuser;
     // End of variables declaration//GEN-END:variables
 }
