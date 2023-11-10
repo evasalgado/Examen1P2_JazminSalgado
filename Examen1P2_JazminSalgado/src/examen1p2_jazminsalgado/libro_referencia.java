@@ -8,26 +8,17 @@ package examen1p2_jazminsalgado;
  *
  * @author evaja
  */
-public class tipo extends libro{
-    private String genero;
+public class libro_referencia extends libro {
+
     private String Tipo;
 
-    public tipo() {
+    public libro_referencia() {
         super();
     }
 
-    public tipo(String genero, String Tipo, String titulo, String autor, double precio, String edicion) {
+    public libro_referencia(String Tipo, String titulo, String autor, double precio, String edicion) {
         super(titulo, autor, precio, edicion);
-        this.genero = genero;
         this.Tipo = Tipo;
-    }
-
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
     }
 
     public String getTipo() {
@@ -35,16 +26,19 @@ public class tipo extends libro{
     }
 
     public void setTipo(String Tipo) {
-        this.Tipo = Tipo;
+        try {
+            if (Tipo == "diccionario" || Tipo == "enciclopedia"
+                || Tipo == "manual" || Tipo == "tecnico" || Tipo == "tesauro") {
+            this.Tipo = Tipo;
+        }
+        } catch (Exception e) {
+            System.out.println("Lo ingresado no es valido");
+        }
     }
 
     @Override
     public String toString() {
-        return super.toString()+ "genero=" + genero + ", Tipo=" + Tipo + '}';
+        return super.toString() + "Tipo=" + Tipo;
     }
 
-    
-
-    
-    
 }
