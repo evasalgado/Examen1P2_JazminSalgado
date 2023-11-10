@@ -39,7 +39,7 @@ public class libro_texto extends libro{
 
     @Override
     public String toString() {
-        return "curso=" + curso + "\nfacultad=" + facultad ;
+        return super.toString()+"curso=" + curso + "\nfacultad=" + facultad ;
     }
     
     
