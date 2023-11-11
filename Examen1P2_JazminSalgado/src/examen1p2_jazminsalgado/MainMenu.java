@@ -138,7 +138,7 @@ public class MainMenu extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        ta_eliminar = new javax.swing.JTextArea();
         bt_eliminar = new javax.swing.JButton();
         lb_saldo = new javax.swing.JLabel();
         tp_menuUser = new javax.swing.JTabbedPane();
@@ -492,13 +492,19 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+        cb_libroeliminar.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_libroeliminarItemStateChanged(evt);
+            }
+        });
+
         jLabel14.setText("Tipo:");
 
         jLabel15.setText("Libro:");
 
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jScrollPane3.setViewportView(jTextArea3);
+        ta_eliminar.setColumns(20);
+        ta_eliminar.setRows(5);
+        jScrollPane3.setViewportView(ta_eliminar);
 
         bt_eliminar.setText("Eliminar Libro");
         bt_eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1244,6 +1250,26 @@ public class MainMenu extends javax.swing.JFrame {
         lb_saldo.setText("Saldo de usuario: " + saldo);
     }//GEN-LAST:event_bt_devolverMouseClicked
 
+    private void cb_libroeliminarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_libroeliminarItemStateChanged
+        String print = "";
+        if (evt.getStateChange() == 2) {
+            if (cb_librodevuele.getSelectedItem() instanceof libro_texto) {
+                libro_texto books = (libro_texto) cb_librodevuele.getSelectedItem();
+               print+=books;
+            } else if (cb_librocompra.getSelectedItem() instanceof libro_referencia) {
+                libro_referencia books = (libro_referencia) cb_librocompra.getSelectedItem();
+                print+=books;
+            } else if (cb_librocompra.getSelectedItem() instanceof libro_ficcion) {
+                libro_ficcion books = (libro_ficcion) cb_librocompra.getSelectedItem();
+                print+=books;
+            } else if (cb_librocompra.getSelectedItem() instanceof libro_noficcion) {
+                libro_noficcion books = (libro_noficcion) cb_librocompra.getSelectedItem();
+                print+=books;
+            }
+            ta_eliminar.setText(print);
+        }
+    }//GEN-LAST:event_cb_libroeliminarItemStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -1333,7 +1359,6 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JTextArea jTextArea3;
     private javax.swing.JLabel lb_saldo;
     private javax.swing.JPanel login;
     private javax.swing.JPasswordField pf_adminpswd;
@@ -1349,6 +1374,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JPanel pn_publicar;
     private javax.swing.JTextArea ta_compra;
     private javax.swing.JTextArea ta_devolver;
+    private javax.swing.JTextArea ta_eliminar;
     private javax.swing.JTextArea ta_listar;
     private javax.swing.JTextArea ta_reembolzo;
     private javax.swing.JTextArea ta_transaccion;
