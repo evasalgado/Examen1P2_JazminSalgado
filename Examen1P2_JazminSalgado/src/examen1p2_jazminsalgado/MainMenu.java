@@ -154,13 +154,13 @@ public class MainMenu extends javax.swing.JFrame {
         cb_librocompra = new javax.swing.JComboBox<>();
         pn_devolver = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTextArea6 = new javax.swing.JTextArea();
+        ta_devolver = new javax.swing.JTextArea();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jTextArea7 = new javax.swing.JTextArea();
+        ta_reembolzo = new javax.swing.JTextArea();
         bt_devolver = new javax.swing.JButton();
         cb_tipodevuelve = new javax.swing.JComboBox<>();
         cb_librodevuele = new javax.swing.JComboBox<>();
@@ -649,9 +649,9 @@ public class MainMenu extends javax.swing.JFrame {
 
         tp_menuUser.addTab("Comprar Libro", pn_comprar);
 
-        jTextArea6.setColumns(20);
-        jTextArea6.setRows(5);
-        jScrollPane6.setViewportView(jTextArea6);
+        ta_devolver.setColumns(20);
+        ta_devolver.setRows(5);
+        jScrollPane6.setViewportView(ta_devolver);
 
         jLabel20.setText("Tipo:");
 
@@ -661,15 +661,21 @@ public class MainMenu extends javax.swing.JFrame {
 
         jLabel23.setText("Transaccion: ");
 
-        jTextArea7.setColumns(20);
-        jTextArea7.setRows(5);
-        jScrollPane7.setViewportView(jTextArea7);
+        ta_reembolzo.setColumns(20);
+        ta_reembolzo.setRows(5);
+        jScrollPane7.setViewportView(ta_reembolzo);
 
         bt_devolver.setText("Devolver Libro");
 
         cb_tipodevuelve.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cb_tipodevuelveItemStateChanged(evt);
+            }
+        });
+
+        cb_librodevuele.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_librodevueleItemStateChanged(evt);
             }
         });
 
@@ -1198,9 +1204,43 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_cb_librocompraItemStateChanged
 
     private void bt_comprarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_comprarMouseClicked
-        saldo-=total;
+        saldo -= total;
         JOptionPane.showMessageDialog(this, "Compra hecha");
     }//GEN-LAST:event_bt_comprarMouseClicked
+
+    private void cb_librodevueleItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_librodevueleItemStateChanged
+        DefaultTableModel modelo = (DefaultTableModel) tb_editar.getModel();
+        if (evt.getStateChange() == 2) {
+            modelo.setRowCount(0);
+            if (cb_librodevuele.getSelectedItem() instanceof libro_texto) {
+                libro_texto books = (libro_texto) cb_librodevuele.getSelectedItem();
+                total = books.getPrecio();
+                ta_devolver.setText(books.toString());
+                ta_reembolzo.setText("Reembolzo: " + books.getPrecio() + "\n\n"
+                        + "Total " + total);
+            } else if (cb_librocompra.getSelectedItem() instanceof libro_referencia) {
+                libro_referencia books = (libro_referencia) cb_librocompra.getSelectedItem();
+                total = books.getPrecio();
+                ta_devolver.setText(books.toString());
+                ta_reembolzo.setText("Reembolzo: " + books.getPrecio() + "\n\n"
+                        + "Total " + total);
+            } else if (cb_librocompra.getSelectedItem() instanceof libro_ficcion) {
+                libro_ficcion books = (libro_ficcion) cb_librocompra.getSelectedItem();
+                total = books.getPrecio();
+                ta_devolver.setText(books.toString());
+                ta_reembolzo.setText("Reembolzo: " + books.getPrecio() + "\n\n"
+                        + "Total " + total);
+            } else if (cb_librocompra.getSelectedItem() instanceof libro_noficcion) {
+                libro_noficcion books = (libro_noficcion) cb_librocompra.getSelectedItem();
+                total = books.getPrecio();
+                ta_devolver.setText(books.toString());
+                ta_reembolzo.setText("Reembolzo: " + books.getPrecio() + "\n\n"
+                        + "Total " + total);
+            }
+        }
+        JOptionPane.showMessageDialog(this, "Libro reembolzado exitosamente");
+        saldo+=total;
+    }//GEN-LAST:event_cb_librodevueleItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -1238,6 +1278,7 @@ public class MainMenu extends javax.swing.JFrame {
     }
     String user = "lib123", pswrd = "321lib";
     ArrayList<libro> libros = new ArrayList<>();
+
     double saldo = 99999;
     double total = 0;
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1292,8 +1333,6 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea6;
-    private javax.swing.JTextArea jTextArea7;
     private javax.swing.JLabel lb_saldo;
     private javax.swing.JPanel login;
     private javax.swing.JPasswordField pf_adminpswd;
@@ -1308,7 +1347,9 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JPanel pn_listarlibros;
     private javax.swing.JPanel pn_publicar;
     private javax.swing.JTextArea ta_compra;
+    private javax.swing.JTextArea ta_devolver;
     private javax.swing.JTextArea ta_listar;
+    private javax.swing.JTextArea ta_reembolzo;
     private javax.swing.JTextArea ta_transaccion;
     private javax.swing.JTable tb_editar;
     private javax.swing.JTextField tf_adminuser;
