@@ -23,6 +23,7 @@ public class MainMenu extends javax.swing.JFrame {
         tp_menuadmin.setVisible(false);
         tp_menuUser.setVisible(false);
         bt_Salir.setVisible(false);
+        lb_saldo.setVisible(false);
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         lb_saldo.setText("Saldo de usuario: " + saldo);
 
@@ -139,13 +140,13 @@ public class MainMenu extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
         bt_eliminar = new javax.swing.JButton();
+        lb_saldo = new javax.swing.JLabel();
         tp_menuUser = new javax.swing.JTabbedPane();
         pn_comprar = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         ta_compra = new javax.swing.JTextArea();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        lb_saldo = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         ta_transaccion = new javax.swing.JTextArea();
@@ -157,7 +158,6 @@ public class MainMenu extends javax.swing.JFrame {
         ta_devolver = new javax.swing.JTextArea();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
         ta_reembolzo = new javax.swing.JTextArea();
@@ -553,6 +553,8 @@ public class MainMenu extends javax.swing.JFrame {
 
         tp_menuadmin.addTab("Eliminar Libros", pn_eliminar);
 
+        lb_saldo.setText("Saldo del usuario: ");
+
         ta_compra.setColumns(20);
         ta_compra.setRows(5);
         jScrollPane4.setViewportView(ta_compra);
@@ -560,8 +562,6 @@ public class MainMenu extends javax.swing.JFrame {
         jLabel16.setText("Tipo:");
 
         jLabel17.setText("Libro: ");
-
-        lb_saldo.setText("Saldo del usuario: ");
 
         jLabel19.setText("Transaccion: ");
 
@@ -599,22 +599,18 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGroup(pn_comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pn_comprarLayout.createSequentialGroup()
-                        .addGroup(pn_comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pn_comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(pn_comprarLayout.createSequentialGroup()
-                                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(116, 116, 116))
-                                .addGroup(pn_comprarLayout.createSequentialGroup()
-                                    .addGroup(pn_comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(pn_comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(cb_librocompra, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(cb_tipocompra, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(pn_comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(pn_comprarLayout.createSequentialGroup()
-                                .addGap(56, 56, 56)
-                                .addComponent(lb_saldo, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(116, 116, 116))
+                            .addGroup(pn_comprarLayout.createSequentialGroup()
+                                .addGroup(pn_comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pn_comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cb_librocompra, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cb_tipocompra, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(28, 28, 28)
                         .addComponent(bt_comprar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(95, Short.MAX_VALUE))
@@ -637,9 +633,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
-                .addGroup(pn_comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lb_saldo)
-                    .addComponent(bt_comprar))
+                .addComponent(bt_comprar)
                 .addGap(12, 12, 12))
             .addGroup(pn_comprarLayout.createSequentialGroup()
                 .addContainerGap()
@@ -657,8 +651,6 @@ public class MainMenu extends javax.swing.JFrame {
 
         jLabel21.setText("Libro: ");
 
-        jLabel22.setText("Saldo del usuario: ");
-
         jLabel23.setText("Transaccion: ");
 
         ta_reembolzo.setColumns(20);
@@ -666,6 +658,11 @@ public class MainMenu extends javax.swing.JFrame {
         jScrollPane7.setViewportView(ta_reembolzo);
 
         bt_devolver.setText("Devolver Libro");
+        bt_devolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_devolverMouseClicked(evt);
+            }
+        });
 
         cb_tipodevuelve.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -689,27 +686,23 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(pn_devolverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(pn_devolverLayout.createSequentialGroup()
-                        .addGroup(pn_devolverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(pn_devolverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(pn_devolverLayout.createSequentialGroup()
-                                .addGroup(pn_devolverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pn_devolverLayout.createSequentialGroup()
-                                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_devolverLayout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addGroup(pn_devolverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pn_devolverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cb_librodevuele, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cb_tipodevuelve, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(12, 12, 12)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_devolverLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(pn_devolverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pn_devolverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cb_librodevuele, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cb_tipodevuelve, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                         .addComponent(bt_devolver, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
         pn_devolverLayout.setVerticalGroup(
             pn_devolverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -727,9 +720,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
-                .addGroup(pn_devolverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel22)
-                    .addComponent(bt_devolver))
+                .addComponent(bt_devolver)
                 .addGap(12, 12, 12))
             .addGroup(pn_devolverLayout.createSequentialGroup()
                 .addContainerGap()
@@ -743,7 +734,10 @@ public class MainMenu extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 815, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(335, Short.MAX_VALUE)
+                .addComponent(lb_saldo, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(182, 182, 182))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -757,12 +751,15 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(tp_menuUser, javax.swing.GroupLayout.DEFAULT_SIZE, 803, Short.MAX_VALUE)
+                    .addComponent(tp_menuUser)
                     .addContainerGap()))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 668, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(580, Short.MAX_VALUE)
+                .addComponent(lb_saldo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -837,6 +834,7 @@ public class MainMenu extends javax.swing.JFrame {
         login.setVisible(false);
         bt_Salir.setVisible(true);
         tp_menuadmin.setVisible(false);
+        lb_saldo.setVisible(true);
     }//GEN-LAST:event_bt_usuariologinMouseClicked
 
     private void cb_listarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_listarItemStateChanged
@@ -1166,9 +1164,8 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void cb_librocompraItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_librocompraItemStateChanged
 
-        DefaultTableModel modelo = (DefaultTableModel) tb_editar.getModel();
+
         if (evt.getStateChange() == 2) {
-            modelo.setRowCount(0);
             if (cb_librocompra.getSelectedItem() instanceof libro_texto) {
                 libro_texto books = (libro_texto) cb_librocompra.getSelectedItem();
                 total = books.getPrecio() % 15;
@@ -1200,18 +1197,18 @@ public class MainMenu extends javax.swing.JFrame {
             }
 
         }
-        tb_editar.setModel(modelo);
+        
     }//GEN-LAST:event_cb_librocompraItemStateChanged
 
     private void bt_comprarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_comprarMouseClicked
         saldo -= total;
         JOptionPane.showMessageDialog(this, "Compra hecha");
+        lb_saldo.setText("Saldo de usuario: " + saldo);
     }//GEN-LAST:event_bt_comprarMouseClicked
 
     private void cb_librodevueleItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_librodevueleItemStateChanged
-        DefaultTableModel modelo = (DefaultTableModel) tb_editar.getModel();
+
         if (evt.getStateChange() == 2) {
-            modelo.setRowCount(0);
             if (cb_librodevuele.getSelectedItem() instanceof libro_texto) {
                 libro_texto books = (libro_texto) cb_librodevuele.getSelectedItem();
                 total = books.getPrecio();
@@ -1238,9 +1235,14 @@ public class MainMenu extends javax.swing.JFrame {
                         + "Total " + total);
             }
         }
-        JOptionPane.showMessageDialog(this, "Libro reembolzado exitosamente");
-        saldo+=total;
+        
     }//GEN-LAST:event_cb_librodevueleItemStateChanged
+
+    private void bt_devolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_devolverMouseClicked
+        saldo+=total;
+        JOptionPane.showMessageDialog(this, "Devolucion Hecha");
+        lb_saldo.setText("Saldo de usuario: " + saldo);
+    }//GEN-LAST:event_bt_devolverMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1315,7 +1317,6 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
