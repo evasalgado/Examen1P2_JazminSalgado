@@ -1221,20 +1221,20 @@ public class MainMenu extends javax.swing.JFrame {
                 ta_devolver.setText(books.toString());
                 ta_reembolzo.setText("Reembolzo: " + books.getPrecio() + "\n\n"
                         + "Total " + total);
-            } else if (cb_librocompra.getSelectedItem() instanceof libro_referencia) {
-                libro_referencia books = (libro_referencia) cb_librocompra.getSelectedItem();
+            } else if (cb_librodevuele.getSelectedItem() instanceof libro_referencia) {
+                libro_referencia books = (libro_referencia) cb_librodevuele.getSelectedItem();
                 total = books.getPrecio();
                 ta_devolver.setText(books.toString());
                 ta_reembolzo.setText("Reembolzo: " + books.getPrecio() + "\n\n"
                         + "Total " + total);
             } else if (cb_librocompra.getSelectedItem() instanceof libro_ficcion) {
-                libro_ficcion books = (libro_ficcion) cb_librocompra.getSelectedItem();
+                libro_ficcion books = (libro_ficcion) cb_librodevuele.getSelectedItem();
                 total = books.getPrecio();
                 ta_devolver.setText(books.toString());
                 ta_reembolzo.setText("Reembolzo: " + books.getPrecio() + "\n\n"
                         + "Total " + total);
-            } else if (cb_librocompra.getSelectedItem() instanceof libro_noficcion) {
-                libro_noficcion books = (libro_noficcion) cb_librocompra.getSelectedItem();
+            } else if (cb_librodevuele.getSelectedItem() instanceof libro_noficcion) {
+                libro_noficcion books = (libro_noficcion) cb_librodevuele.getSelectedItem();
                 total = books.getPrecio();
                 ta_devolver.setText(books.toString());
                 ta_reembolzo.setText("Reembolzo: " + books.getPrecio() + "\n\n"
@@ -1253,17 +1253,17 @@ public class MainMenu extends javax.swing.JFrame {
     private void cb_libroeliminarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_libroeliminarItemStateChanged
         String print = "";
         if (evt.getStateChange() == 2) {
-            if (cb_librodevuele.getSelectedItem() instanceof libro_texto) {
-                libro_texto books = (libro_texto) cb_librodevuele.getSelectedItem();
+            if (cb_libroeliminar.getSelectedItem() instanceof libro_texto) {
+                libro_texto books = (libro_texto) cb_libroeliminar.getSelectedItem();
                print+=books;
-            } else if (cb_librocompra.getSelectedItem() instanceof libro_referencia) {
-                libro_referencia books = (libro_referencia) cb_librocompra.getSelectedItem();
+            } else if (cb_libroeliminar.getSelectedItem() instanceof libro_referencia) {
+                libro_referencia books = (libro_referencia) cb_libroeliminar.getSelectedItem();
                 print+=books;
-            } else if (cb_librocompra.getSelectedItem() instanceof libro_ficcion) {
-                libro_ficcion books = (libro_ficcion) cb_librocompra.getSelectedItem();
+            } else if (cb_libroeliminar.getSelectedItem() instanceof libro_ficcion) {
+                libro_ficcion books = (libro_ficcion) cb_libroeliminar.getSelectedItem();
                 print+=books;
-            } else if (cb_librocompra.getSelectedItem() instanceof libro_noficcion) {
-                libro_noficcion books = (libro_noficcion) cb_librocompra.getSelectedItem();
+            } else if (cb_libroeliminar.getSelectedItem() instanceof libro_noficcion) {
+                libro_noficcion books = (libro_noficcion) cb_libroeliminar.getSelectedItem();
                 print+=books;
             }
             ta_eliminar.setText(print);
