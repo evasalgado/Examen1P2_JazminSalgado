@@ -505,6 +505,11 @@ public class MainMenu extends javax.swing.JFrame {
         jScrollPane3.setViewportView(jTextArea3);
 
         bt_eliminar.setText("Eliminar Libro");
+        bt_eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_eliminarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pn_eliminarLayout = new javax.swing.GroupLayout(pn_eliminar);
         pn_eliminar.setLayout(pn_eliminarLayout);
@@ -1096,18 +1101,14 @@ public class MainMenu extends javax.swing.JFrame {
         Object seleccion = cb_libro.getSelectedItem();
         if (seleccion != null) {
             if (seleccion instanceof libro_texto) {
-//                ((libro_texto)seleccion).setPrecio(Double.parseDouble(tf_precioeditar.getText()));
-//               ((libro_texto)seleccion).setTitulo(tf_tituloeditar.getText());
+
                 ((libro_texto) libros.get(cb_libro.getSelectedIndex())).setTitulo(tf_tituloeditar.getText());
                 ((libro_texto) libros.get(cb_libro.getSelectedIndex())).setAutor(tf_autor.getText());
                 ((libro_texto) libros.get(cb_libro.getSelectedIndex())).setPrecio(Double.parseDouble(tf_precioeditar.getText()));
                 ((libro_texto) libros.get(cb_libro.getSelectedIndex())).setEdicion(((libro_texto) libros.get(cb_libro.getSelectedIndex())).getEdicion() + 1);
 
             } else if (seleccion instanceof libro_referencia) {
-//                ((libro_referencia)seleccion).setPrecio(Double.parseDouble(tf_precioeditar.getText()));
-//               ((libro_referencia)seleccion).setTitulo(tf_tituloeditar.getText());
-//                ((libro_referencia)seleccion).setAutor(tf_autoreditar.getText());
-//                ((libro_referencia)seleccion).setEdicion(((libro)seleccion).getEdicion() + 1);
+
                 ((libro_referencia) libros.get(cb_libro.getSelectedIndex())).setTitulo(tf_tituloeditar.getText());
                 ((libro_referencia) libros.get(cb_libro.getSelectedIndex())).setAutor(tf_autor.getText());
                 ((libro_referencia) libros.get(cb_libro.getSelectedIndex())).setPrecio(Double.parseDouble(tf_precioeditar.getText()));
@@ -1133,6 +1134,22 @@ public class MainMenu extends javax.swing.JFrame {
         tf_tituloeditar.setText("");
         tf_autoreditar.setText("");
     }//GEN-LAST:event_bt_editarMouseClicked
+
+    private void bt_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_eliminarMouseClicked
+        Object seleccion = cb_libro.getSelectedItem();
+        if (seleccion != null) {
+            if (seleccion instanceof libro_texto) {
+                libros.remove(cb_libro.getSelectedIndex());
+            } else if (seleccion instanceof libro_referencia) {
+                 libros.remove(cb_libro.getSelectedIndex());
+            } else if (seleccion instanceof libro_ficcion) {
+                 libros.remove(cb_libro.getSelectedIndex());
+            } else if (seleccion instanceof libro_noficcion) {
+                 libros.remove(cb_libro.getSelectedIndex());
+            }
+        }
+        JOptionPane.showMessageDialog(this, "Libro eliminado correctamente");
+    }//GEN-LAST:event_bt_eliminarMouseClicked
 
     /**
      * @param args the command line arguments
