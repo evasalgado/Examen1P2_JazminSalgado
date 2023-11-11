@@ -24,6 +24,7 @@ public class MainMenu extends javax.swing.JFrame {
         tp_menuUser.setVisible(false);
         bt_Salir.setVisible(false);
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        lb_saldo.setText("Saldo de usuario: " + saldo);
 
         modelo = (DefaultComboBoxModel) cb_tiporef.getModel();
         modelo.addElement("diccionario");
@@ -141,13 +142,13 @@ public class MainMenu extends javax.swing.JFrame {
         tp_menuUser = new javax.swing.JTabbedPane();
         pn_comprar = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
+        ta_compra = new javax.swing.JTextArea();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
+        lb_saldo = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTextArea5 = new javax.swing.JTextArea();
+        ta_transaccion = new javax.swing.JTextArea();
         bt_comprar = new javax.swing.JButton();
         cb_tipocompra = new javax.swing.JComboBox<>();
         cb_librocompra = new javax.swing.JComboBox<>();
@@ -399,11 +400,6 @@ public class MainMenu extends javax.swing.JFrame {
                 cb_listarItemStateChanged(evt);
             }
         });
-        cb_listar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_listarActionPerformed(evt);
-            }
-        });
 
         ta_listar.setColumns(20);
         ta_listar.setRows(5);
@@ -557,27 +553,38 @@ public class MainMenu extends javax.swing.JFrame {
 
         tp_menuadmin.addTab("Eliminar Libros", pn_eliminar);
 
-        jTextArea4.setColumns(20);
-        jTextArea4.setRows(5);
-        jScrollPane4.setViewportView(jTextArea4);
+        ta_compra.setColumns(20);
+        ta_compra.setRows(5);
+        jScrollPane4.setViewportView(ta_compra);
 
         jLabel16.setText("Tipo:");
 
         jLabel17.setText("Libro: ");
 
-        jLabel18.setText("Saldo del usuario: ");
+        lb_saldo.setText("Saldo del usuario: ");
 
         jLabel19.setText("Transaccion: ");
 
-        jTextArea5.setColumns(20);
-        jTextArea5.setRows(5);
-        jScrollPane5.setViewportView(jTextArea5);
+        ta_transaccion.setColumns(20);
+        ta_transaccion.setRows(5);
+        jScrollPane5.setViewportView(ta_transaccion);
 
         bt_comprar.setText("Comprar Libro");
+        bt_comprar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_comprarMouseClicked(evt);
+            }
+        });
 
         cb_tipocompra.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cb_tipocompraItemStateChanged(evt);
+            }
+        });
+
+        cb_librocompra.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_librocompraItemStateChanged(evt);
             }
         });
 
@@ -592,25 +599,25 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGroup(pn_comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pn_comprarLayout.createSequentialGroup()
-                        .addGroup(pn_comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(pn_comprarLayout.createSequentialGroup()
-                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(116, 116, 116))
+                        .addGroup(pn_comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pn_comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(pn_comprarLayout.createSequentialGroup()
-                                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pn_comprarLayout.createSequentialGroup()
+                                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(116, 116, 116))
+                                .addGroup(pn_comprarLayout.createSequentialGroup()
                                     .addGroup(pn_comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(pn_comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(cb_librocompra, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(cb_tipocompra, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(cb_tipocompra, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(pn_comprarLayout.createSequentialGroup()
+                                .addGap(56, 56, 56)
+                                .addComponent(lb_saldo, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(28, 28, 28)
                         .addComponent(bt_comprar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
         pn_comprarLayout.setVerticalGroup(
             pn_comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -631,7 +638,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
                 .addGroup(pn_comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
+                    .addComponent(lb_saldo)
                     .addComponent(bt_comprar))
                 .addGap(12, 12, 12))
             .addGroup(pn_comprarLayout.createSequentialGroup()
@@ -701,10 +708,6 @@ public class MainMenu extends javax.swing.JFrame {
         pn_devolverLayout.setVerticalGroup(
             pn_devolverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_devolverLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane6)
-                .addContainerGap())
-            .addGroup(pn_devolverLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(pn_devolverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
@@ -722,6 +725,10 @@ public class MainMenu extends javax.swing.JFrame {
                     .addComponent(jLabel22)
                     .addComponent(bt_devolver))
                 .addGap(12, 12, 12))
+            .addGroup(pn_devolverLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tp_menuUser.addTab("Devolver Libro", pn_devolver);
@@ -906,6 +913,7 @@ public class MainMenu extends javax.swing.JFrame {
         modelo = (DefaultComboBoxModel) cb_libro.getModel();
         if (evt.getStateChange() == 2) {
             if (cb_tipo.getSelectedItem().toString().equalsIgnoreCase("Libro de Texto")) {
+                modelo = new DefaultComboBoxModel();
                 for (libro libro1 : libros) {
                     if (libro1 instanceof libro_texto) {
 
@@ -914,6 +922,7 @@ public class MainMenu extends javax.swing.JFrame {
                 }
 
             } else if (cb_tipo.getSelectedItem().toString().equalsIgnoreCase("Libro de referencias")) {
+                modelo = new DefaultComboBoxModel();
                 for (libro libro1 : libros) {
                     if (libro1 instanceof libro_referencia) {
 
@@ -921,6 +930,7 @@ public class MainMenu extends javax.swing.JFrame {
                     }
                 }
             } else if (cb_tipo.getSelectedItem().toString().equalsIgnoreCase("Libro de Ficcion")) {
+                modelo = new DefaultComboBoxModel();
                 for (libro libro1 : libros) {
                     if (libro1 instanceof libro_ficcion) {
 
@@ -928,6 +938,7 @@ public class MainMenu extends javax.swing.JFrame {
                     }
                 }
             } else if (cb_tipo.getSelectedItem().toString().equalsIgnoreCase("Libro de No Ficcion")) {
+                modelo = new DefaultComboBoxModel();
                 for (libro libro1 : libros) {
                     if (libro1 instanceof libro_noficcion) {
 
@@ -940,7 +951,7 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_cb_tipoItemStateChanged
 
     private void cb_libroItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_libroItemStateChanged
-        DefaultTableModel modelo = (DefaultTableModel) tb_editar.getModel();;
+        DefaultTableModel modelo = (DefaultTableModel) tb_editar.getModel();
         if (evt.getStateChange() == 2) {
             modelo.setRowCount(0);
             if (cb_libro.getSelectedItem() instanceof libro_texto) {
@@ -1093,10 +1104,6 @@ public class MainMenu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cb_tipodevuelveItemStateChanged
 
-    private void cb_listarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_listarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cb_listarActionPerformed
-
     private void bt_editarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_editarMouseClicked
         Object seleccion = cb_libro.getSelectedItem();
         if (seleccion != null) {
@@ -1141,15 +1148,59 @@ public class MainMenu extends javax.swing.JFrame {
             if (seleccion instanceof libro_texto) {
                 libros.remove(cb_libro.getSelectedIndex());
             } else if (seleccion instanceof libro_referencia) {
-                 libros.remove(cb_libro.getSelectedIndex());
+                libros.remove(cb_libro.getSelectedIndex());
             } else if (seleccion instanceof libro_ficcion) {
-                 libros.remove(cb_libro.getSelectedIndex());
+                libros.remove(cb_libro.getSelectedIndex());
             } else if (seleccion instanceof libro_noficcion) {
-                 libros.remove(cb_libro.getSelectedIndex());
+                libros.remove(cb_libro.getSelectedIndex());
             }
         }
         JOptionPane.showMessageDialog(this, "Libro eliminado correctamente");
     }//GEN-LAST:event_bt_eliminarMouseClicked
+
+    private void cb_librocompraItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_librocompraItemStateChanged
+
+        DefaultTableModel modelo = (DefaultTableModel) tb_editar.getModel();
+        if (evt.getStateChange() == 2) {
+            modelo.setRowCount(0);
+            if (cb_librocompra.getSelectedItem() instanceof libro_texto) {
+                libro_texto books = (libro_texto) cb_librocompra.getSelectedItem();
+                total = books.getPrecio() % 15;
+                ta_compra.setText(books.toString());
+                ta_transaccion.setText("Sub total: " + books.getPrecio() + "\n\n"
+                        + "ISV 15%\n\n"
+                        + "Total " + total);
+            } else if (cb_librocompra.getSelectedItem() instanceof libro_referencia) {
+                libro_referencia books = (libro_referencia) cb_librocompra.getSelectedItem();
+                total = books.getPrecio() % 15;
+                ta_compra.setText(books.toString());
+                ta_transaccion.setText("Sub total: " + books.getPrecio() + "\n\n"
+                        + "ISV 15%\n\n"
+                        + "Total " + total);
+            } else if (cb_librocompra.getSelectedItem() instanceof libro_ficcion) {
+                libro_ficcion books = (libro_ficcion) cb_librocompra.getSelectedItem();
+                total = books.getPrecio() % 15;
+                ta_compra.setText(books.toString());
+                ta_transaccion.setText("Sub total: " + books.getPrecio() + "\n\n"
+                        + "ISV 15%\n\n"
+                        + "Total " + total);
+            } else if (cb_librocompra.getSelectedItem() instanceof libro_noficcion) {
+                libro_noficcion books = (libro_noficcion) cb_librocompra.getSelectedItem();
+                total = books.getPrecio() % 15;
+                ta_compra.setText(books.toString());
+                ta_transaccion.setText("Sub total: " + books.getPrecio() + "\n\n"
+                        + "ISV 15%\n\n"
+                        + "Total " + total);
+            }
+
+        }
+        tb_editar.setModel(modelo);
+    }//GEN-LAST:event_cb_librocompraItemStateChanged
+
+    private void bt_comprarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_comprarMouseClicked
+        saldo-=total;
+        JOptionPane.showMessageDialog(this, "Compra hecha");
+    }//GEN-LAST:event_bt_comprarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1187,6 +1238,8 @@ public class MainMenu extends javax.swing.JFrame {
     }
     String user = "lib123", pswrd = "321lib";
     ArrayList<libro> libros = new ArrayList<>();
+    double saldo = 99999;
+    double total = 0;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_Salir;
     private javax.swing.JButton bt_comprar;
@@ -1217,7 +1270,6 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
@@ -1240,10 +1292,9 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea4;
-    private javax.swing.JTextArea jTextArea5;
     private javax.swing.JTextArea jTextArea6;
     private javax.swing.JTextArea jTextArea7;
+    private javax.swing.JLabel lb_saldo;
     private javax.swing.JPanel login;
     private javax.swing.JPasswordField pf_adminpswd;
     private javax.swing.JPanel pn_comprar;
@@ -1256,7 +1307,9 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JPanel pn_librotexto;
     private javax.swing.JPanel pn_listarlibros;
     private javax.swing.JPanel pn_publicar;
+    private javax.swing.JTextArea ta_compra;
     private javax.swing.JTextArea ta_listar;
+    private javax.swing.JTextArea ta_transaccion;
     private javax.swing.JTable tb_editar;
     private javax.swing.JTextField tf_adminuser;
     private javax.swing.JTextField tf_autor;
